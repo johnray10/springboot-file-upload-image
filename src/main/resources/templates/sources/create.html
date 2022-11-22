@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PixelTrice</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css}">
+</head>
+<body>
+<br>
+<h1 class="text-center">Image Gallery
+
+</h1>
+<br><br>
+
+<table class="table  table-bordered text-center" id="example">
+    <thead>
+    <tr>
+        <th>SR. No.</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+
+    </tr>
+    </thead>
+    <tbody th:with="count=0">
+    <tr th:each="gallery, hh : ${images}">
+        <td th:text="${count}" th:with="count=${count + 1}"></td>
+        <td th:text="${gallery.name}"></td>
+        <td>
+            <img alt="" class="card img-fluid" style="width:100px" th:src="@{${'/image/display/'+ gallery.id}}"/>
+        </td>
+        <td th:text="${gallery.price}"></td>
+
+    </tr>
+    </tbody>
+</table>
+<a class="btn btn-info text-right" href="/home">Go Home</a>
+
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js}"></script>
+
+</body>
+</html>
